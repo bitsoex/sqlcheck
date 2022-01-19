@@ -11,7 +11,7 @@ jobs:
     env:
       SQLCHECK_PACKAGE_ARCH: amd64
       SQLCHECK_PACKAGE_NAME: sqlcheck
-      SQLCHECK_PACKAGE_VERSION: '1.2'
+      SQLCHECK_PACKAGE_VERSION: '1.2.1'
 
     runs-on: ubuntu-20.04
 
