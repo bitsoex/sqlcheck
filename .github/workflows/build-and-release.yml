@@ -1,0 +1,62 @@
+name: Build and release
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+  build:
+    env:
+      SQLCHECK_PACKAGE_ARCH: amd64
+      SQLCHECK_PACKAGE_NAME: sqlcheck
+      SQLCHECK_PACKAGE_VERSION: '1.2'
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y \
+          && sudo apt-get install -y --no-install-recommends build-essential cmake git
+
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          git submodule update --init --recursive \
+          && ./bootstrap \
+          && cd build \
+          && cmake -DCMAKE_BUILD_TYPE=RELEASE .. \
+          && make \
+          && sudo make install
+
+      # The sqlcheck version number is hard-coded in the source code (see main.cpp), so we check
+      # that the version of the package and associated GitHub release match the version in the
+      # binary.
+      - name: Check build version
+        run: |
+          actual_version=$(sqlcheck --version | grep "sqlcheck version" | cut -d ' ' -f 3)
+          if [ "${actual_version}" == "${SQLCHECK_PACKAGE_VERSION}" ]; then
+            echo Expected version "${SQLCHECK_PACKAGE_VERSION}" found
+          else
+            echo Expected version "${SQLCHECK_PACKAGE_VERSION}" but found "${actual_version}"
+            exit 1
+          fi
+
+      - name: Create package
+        run: ./build_pkg.sh
+
+      - name: Create GitHub release (if needed)
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          output="$(gh release view ${SQLCHECK_PACKAGE_VERSION})"
+          if [[ $? -eq 0 ]] ; then
+            echo Release for ${SQLCHECK_PACKAGE_VERSION} already exists
+            echo ${output}
+          else
+            gh release create ${SQLCHECK_PACKAGE_VERSION} --notes "sqlcheck version ${SQLCHECK_PACKAGE_VERSION}" *.deb
+          fi
