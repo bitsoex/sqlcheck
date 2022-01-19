@@ -53,8 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          output="$(gh release view ${SQLCHECK_PACKAGE_VERSION})"
-          if [[ $? -eq 0 ]] ; then
+          if gh release view ${SQLCHECK_PACKAGE_VERSION} 2>/dev/null; then
             echo Release for ${SQLCHECK_PACKAGE_VERSION} already exists
             echo ${output}
           else
