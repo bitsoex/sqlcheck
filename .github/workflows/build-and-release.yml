@@ -32,6 +32,9 @@ jobs:
           && make \
           && sudo make install
 
+      # The sqlcheck version number is hard-coded in the source code (see main.cpp), so we check
+      # that the version of the package and associated GitHub release match the version in the
+      # binary.
       - name: Check build version
         run: |
           actual_version=$(sqlcheck --version | grep "sqlcheck version" | cut -d ' ' -f 3)
