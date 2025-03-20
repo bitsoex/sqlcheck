@@ -1,0 +1,120 @@
+chat:
+    auto_reply: true
+    integrations:
+        jira:
+            usage: auto
+        linear:
+            usage: auto
+early_access: false
+enable_free_tier: true
+knowledge_base:
+    issues:
+        scope: auto
+    jira:
+        project_keys: []
+        usage: auto
+    learnings:
+        scope: auto
+    linear:
+        team_keys: []
+        usage: auto
+    opt_out: false
+    pull_requests:
+        scope: auto
+language: en-US
+reviews:
+    abort_on_close: true
+    assess_linked_issues: true
+    auto_apply_labels: false
+    auto_review:
+        auto_incremental_review: true
+        base_branches: []
+        drafts: false
+        enabled: true
+        ignore_title_keywords: []
+        labels: []
+    auto_title_instructions: ""
+    auto_title_placeholder: '@coderabbitai'
+    changed_files_summary: true
+    collapse_walkthrough: true
+    commit_status: true
+    fail_commit_status: false
+    finishing_touches:
+        docstrings:
+            enabled: true
+    high_level_summary: true
+    high_level_summary_in_walkthrough: false
+    high_level_summary_placeholder: '@coderabbitai summary'
+    labeling_instructions: []
+    path_filters: []
+    path_instructions: []
+    poem: false
+    profile: chill
+    related_issues: true
+    related_prs: true
+    request_changes_workflow: false
+    review_status: true
+    sequence_diagrams: true
+    suggested_labels: true
+    suggested_reviewers: true
+    tools:
+        actionlint:
+            enabled: true
+        ast-grep:
+            essential_rules: true
+            packages: []
+            rule_dirs: []
+            util_dirs: []
+        biome:
+            enabled: true
+        buf:
+            enabled: true
+        checkov:
+            enabled: true
+        circleci:
+            enabled: true
+        cppcheck:
+            enabled: true
+        detekt:
+            enabled: true
+        eslint:
+            enabled: true
+        github-checks:
+            enabled: true
+            timeout_ms: 90000
+        gitleaks:
+            enabled: true
+        golangci-lint:
+            enabled: true
+        hadolint:
+            enabled: true
+        languagetool:
+            disabled_categories: []
+            disabled_rules: []
+            enabled: true
+            enabled_categories: []
+            enabled_only: false
+            enabled_rules: []
+            level: default
+        markdownlint:
+            enabled: true
+        phpstan:
+            enabled: true
+            level: default
+        pmd:
+            enabled: true
+        regal:
+            enabled: true
+        rubocop:
+            enabled: true
+        ruff:
+            enabled: true
+        semgrep:
+            enabled: true
+        shellcheck:
+            enabled: true
+        swiftlint:
+            enabled: true
+        yamllint:
+            enabled: true
+tone_instructions: ""
