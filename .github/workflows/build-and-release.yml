@@ -28,7 +28,7 @@ jobs:
           git submodule update --init --recursive \
           && ./bootstrap \
           && cd build \
-          && cmake -DCMAKE_BUILD_TYPE=RELEASE .. \
+          && cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .. \
           && make \
           && sudo make install
 
