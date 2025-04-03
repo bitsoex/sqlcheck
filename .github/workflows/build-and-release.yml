@@ -13,7 +13,7 @@ jobs:
       SQLCHECK_PACKAGE_NAME: sqlcheck
       SQLCHECK_PACKAGE_VERSION: '1.2.1'
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Install dependencies
@@ -28,7 +28,7 @@ jobs:
           git submodule update --init --recursive \
           && ./bootstrap \
           && cd build \
-          && cmake -DCMAKE_BUILD_TYPE=RELEASE .. \
+          && cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .. \
           && make \
           && sudo make install
 
