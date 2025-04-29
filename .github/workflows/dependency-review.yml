@@ -1,0 +1,28 @@
+jobs:
+    dependency-review:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Dependency Review
+              uses: actions/dependency-review-action@v4
+              with:
+                comment-summary-in-pr: always
+                show-openssf-scorecard: false
+                warn-only: true
+name: Dependency Review
+"on":
+    pull_request:
+        branches:
+            - main
+        types:
+            - opened
+            - edited
+            - synchronize
+            - reopened
+            - labeled
+permissions:
+    contents: write
+    id-token: write
+    pull-requests: write
+    security-events: write
