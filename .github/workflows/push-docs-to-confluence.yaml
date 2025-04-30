@@ -1,0 +1,27 @@
+jobs:
+    mark-container-job:
+        container:
+            env:
+                MARK_PASSWORD: ${{ secrets.ATLASSIAN_API_TOKEN }}
+                MARK_USERNAME: ${{ vars.ATLASSIAN_USERNAME }}
+            image: kovetskiy/mark:12.0.0
+            options: --cpus 1
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Check if mark.toml exists
+              run: 'test -f mark.toml || (echo ''Error: mark.toml not found in the docs folder'' && exit 1)'
+              working-directory: ./docs
+            - name: Convert markdown docs to confluence
+              run: mark --config mark.toml
+              working-directory: ./docs
+            - name: Notify success
+              run: echo 'Successfully pushed documentation to Confluence'
+name: Push Documentation to Confluence
+"on":
+    push:
+        branches:
+            - main
+        paths:
+            - docs/**
