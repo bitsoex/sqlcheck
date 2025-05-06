@@ -7,7 +7,7 @@ jobs:
             - name: Dependency Review
               uses: actions/dependency-review-action@v4
               with:
-                comment-summary-in-pr: always
+                comment-summary-in-pr: on-failure
                 show-openssf-scorecard: false
                 warn-only: true
 name: Dependency Review
