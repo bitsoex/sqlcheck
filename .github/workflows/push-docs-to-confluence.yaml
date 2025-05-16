@@ -26,3 +26,5 @@ name: Push Documentation to Confluence
             - master
         paths:
             - docs/**
+permissions:
+    contents: read
