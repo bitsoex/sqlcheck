@@ -1,5 +1,6 @@
 jobs:
     dependency-review:
+        if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
@@ -16,12 +17,17 @@ name: Dependency Review
     pull_request:
         branches:
             - main
+            - master
         types:
             - opened
             - edited
             - synchronize
             - reopened
             - labeled
+    push:
+        branches:
+            - main
+            - master
 permissions:
     contents: write
     id-token: write
