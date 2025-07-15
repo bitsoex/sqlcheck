@@ -23,7 +23,6 @@ name: Dependency Review
             - edited
             - synchronize
             - reopened
-            - labeled
     push:
         branches:
             - main
