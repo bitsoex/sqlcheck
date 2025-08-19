@@ -9,7 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
             - name: Check if mark.toml exists
               run: 'test -f mark.toml || (echo ''Error: mark.toml not found in the docs folder'' && exit 1)'
               working-directory: ./docs
