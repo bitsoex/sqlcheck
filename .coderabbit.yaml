@@ -58,6 +58,8 @@ reviews:
     finishing_touches:
         docstrings:
             enabled: true
+        unit_tests:
+            enabled: true
     high_level_summary: true
     high_level_summary_in_walkthrough: false
     high_level_summary_placeholder: '@coderabbitai summary'
@@ -85,26 +87,40 @@ reviews:
             util_dirs: []
         biome:
             enabled: true
+        brakeman:
+            enabled: true
         buf:
+            enabled: true
+        checkmake:
             enabled: true
         checkov:
             enabled: true
         circleci:
             enabled: true
+        clang:
+            enabled: true
+        clippy:
+            enabled: true
         cppcheck:
             enabled: true
         detekt:
             enabled: true
+        dotenvLint:
+            enabled: true
         eslint:
+            enabled: true
+        flake8:
             enabled: true
         github-checks:
             enabled: true
-            timeout_ms: 90000
+            timeout_ms: 180000
         gitleaks:
             enabled: true
         golangci-lint:
             enabled: true
         hadolint:
+            enabled: true
+        htmlhint:
             enabled: true
         languagetool:
             disabled_categories: []
@@ -114,12 +130,26 @@ reviews:
             enabled_only: false
             enabled_rules: []
             level: default
+        luacheck:
+            enabled: true
         markdownlint:
+            enabled: true
+        osvScanner:
+            enabled: true
+        oxc:
+            enabled: true
+        phpcs:
+            enabled: true
+        phpmd:
             enabled: true
         phpstan:
             enabled: true
             level: default
         pmd:
+            enabled: true
+        prismaLint:
+            enabled: true
+        pylint:
             enabled: true
         regal:
             enabled: true
@@ -130,6 +160,10 @@ reviews:
         semgrep:
             enabled: true
         shellcheck:
+            enabled: true
+        shopifyThemeCheck:
+            enabled: true
+        sqlfluff:
             enabled: true
         swiftlint:
             enabled: true
