@@ -113,7 +113,7 @@ reviews:
             enabled: true
         github-checks:
             enabled: true
-            timeout_ms: 180000
+            timeout_ms: 900000
         gitleaks:
             enabled: true
         golangci-lint:
