@@ -69,7 +69,7 @@ reviews:
     path_instructions: []
     poem: false
     pre_merge_checks: {}
-    profile: assertive
+    profile: chill
     related_issues: true
     related_prs: true
     request_changes_workflow: true
@@ -112,8 +112,8 @@ reviews:
         flake8:
             enabled: true
         github-checks:
-            enabled: true
-            timeout_ms: 900000
+            enabled: false
+            timeout_ms: 60000
         gitleaks:
             enabled: true
         golangci-lint:
