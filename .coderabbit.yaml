@@ -112,8 +112,8 @@ reviews:
         flake8:
             enabled: true
         github-checks:
-            enabled: false
-            timeout_ms: 60000
+            enabled: true
+            timeout_ms: 30000
         gitleaks:
             enabled: true
         golangci-lint:
