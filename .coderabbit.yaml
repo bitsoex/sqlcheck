@@ -13,6 +13,18 @@ code_generation:
         path_instructions: []
 early_access: false
 enable_free_tier: true
+inheritance: true
+issue_enrichment:
+    auto_enrich:
+        enabled: false
+    labeling:
+        auto_apply_labels: false
+        labeling_instructions: []
+    planning:
+        auto_planning:
+            enabled: true
+            labels: []
+        enabled: true
 knowledge_base:
     code_guidelines:
         enabled: true
@@ -66,7 +78,22 @@ reviews:
     in_progress_fortune: true
     labeling_instructions: []
     path_filters: []
-    path_instructions: []
+    path_instructions:
+        - instructions: |
+            IMPORTANT PLATFORM CONTEXT:
+            - All development environments are macOS or Linux containers
+            - Windows is NOT a supported platform
+            - Do NOT suggest Windows-specific fixes or compatibility
+            - Do NOT flag issues about Windows path separators, line endings, or file permissions
+            - Cross-platform Node.js code should assume POSIX paths
+            - Shell scripts target bash/zsh only
+
+            When reviewing:
+            - Skip Windows compatibility concerns
+            - Assume fs.chmodSync works (Unix permissions)
+            - Assume forward slashes in paths
+            - Assume LF line endings
+          path: '**/*'
     poem: false
     pre_merge_checks: {}
     profile: chill
