@@ -54,7 +54,8 @@ reviews:
     auto_assign_reviewers: false
     auto_review:
         auto_incremental_review: true
-        base_branches: []
+        base_branches:
+            - .*
         drafts: true
         enabled: true
         ignore_title_keywords: []
