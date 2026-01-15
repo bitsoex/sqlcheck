@@ -8,9 +8,10 @@ jobs:
               uses: actions/dependency-review-action@v4
               with:
                 comment-summary-in-pr: never
+                fail-on-severity: high
                 license-check: false
                 show-openssf-scorecard: false
-                warn-only: true
+                warn-only: false
 name: Dependency Review
 "on":
     pull_request:
