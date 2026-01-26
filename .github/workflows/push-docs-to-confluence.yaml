@@ -6,7 +6,7 @@ jobs:
                 MARK_USERNAME: ${{ vars.ATLASSIAN_USERNAME }}
             image: kovetskiy/mark:12.2.0
             options: --cpus 1
-        runs-on: ubuntu-latest
+        runs-on: ${{ fromJSON(vars.BLACKSMITH_ENABLED || 'false') && 'blacksmith-2vcpu-ubuntu-2404' || 'ubuntu-latest' }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v6
