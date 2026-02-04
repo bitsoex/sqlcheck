@@ -3,7 +3,7 @@
 
 # These owners will be the default owners for everything in the repo.
 # Note: owners need to have writting permision in the repository
-*                                     @bitsoex/admin-code-owners
+*                                     @bitsoex/estate-catalog-code-owners
 
 # Platform related code
 /.github/                             @bitsoex/cicd-code-owners
