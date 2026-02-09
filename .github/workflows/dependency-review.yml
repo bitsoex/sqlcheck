@@ -18,6 +18,15 @@ name: Dependency Review
         branches:
             - main
             - master
+        paths-ignore:
+            - docs/**
+            - '*.md'
+            - .cursor/**
+            - .claude/**
+            - .vscode/**
+            - deployments/**
+            - flyway/**
+            - '**/*.proto'
         types:
             - opened
             - edited
