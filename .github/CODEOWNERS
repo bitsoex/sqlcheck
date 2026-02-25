@@ -5,16 +5,16 @@
 # Note: owners need to have writting permision in the repository
 *                                     @bitsoex/estate-catalog-code-owners
 
-# Platform related code
+# Pipeline related code
 /.github/                             @bitsoex/cicd-code-owners
-/buildspec.yaml                       @bitsoex/cicd-code-owners
-/codebuild/                           @bitsoex/cicd-code-owners
-/deployments/*/spinnaker              @bitsoex/cicd-code-owners
 /docker/Dockerfile                    @bitsoex/cicd-code-owners
-/infrastructure/                      @bitsoex/platform-code-owners
-/flyway/                              @bitsoex/database-code-owners
 
-/flyway/db/migrations/*               @bitsoex/database-code-owners
-/flyway/version.log                   @bitsoex/database-code-owners
+# Deployment and infrastructure
+/infrastructure/                      @bitsoex/platform-code-owners
 /deployments/*/helm                   @bitsoex/application-config-code-owners
 /deployments/*/secrets                @bitsoex/application-config-code-owners
+
+# Database
+/flyway/                              @bitsoex/database-code-owners
+/flyway/db/migrations/*               @bitsoex/database-code-owners
+/flyway/version.log                   @bitsoex/database-code-owners
