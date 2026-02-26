@@ -1,0 +1,17 @@
+jobs:
+    enforce-human-approvals:
+        runs-on: ubuntu-slim
+        steps:
+            - uses: bitsoex/actions/ai-pr-human-review-check@main
+              with:
+                required_human_approvals: "2"
+name: AI PR Human Review Check
+"on":
+    pull_request_review:
+        types:
+            - submitted
+            - edited
+            - dismissed
+permissions:
+    contents: read
+    pull-requests: read
