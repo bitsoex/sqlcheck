@@ -62,6 +62,21 @@
       "type": "http",
       "url": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
     },
+    "eks-mcp-server": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "awslabs.eks-mcp-server@0.1.23",
+        "--allow-sensitive-data-access"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "INFO",
+        "AWS_PROFILE": "eks-mcp",
+        "AWS_REGION": "${AWS_REGION}",
+        "AWS_CA_BUNDLE": "${CLOUDFLARE_CA_CERT}",
+        "SSL_CERT_FILE": "${CLOUDFLARE_CA_CERT}"
+      }
+    },
     "github": {
       "type": "stdio",
       "command": "sh",
