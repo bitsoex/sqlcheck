@@ -23,7 +23,7 @@ jobs:
                 script: |-
                     await github.rest.repos.createCommitStatus({
                       ...context.repo,
-                      sha: context.payload.merge_group.head.sha,
+                      sha: context.sha,
                       state: 'success',
                       context: 'AI PR Human Review Policy',
                       description: 'Merge group checks requested — no policy required.',
