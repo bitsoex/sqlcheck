@@ -16,6 +16,18 @@ jobs:
                       context: 'AI PR Human Review Policy',
                       description: 'Not an AI-authored PR — no policy required.',
                     });
+            - if: github.event_name == 'merge_group'
+              name: Fast-pass on merge group
+              uses: actions/github-script@v7
+              with:
+                script: |-
+                    await github.rest.repos.createCommitStatus({
+                      ...context.repo,
+                      sha: context.payload.merge_group.head.sha,
+                      state: 'success',
+                      context: 'AI PR Human Review Policy',
+                      description: 'Merge group checks requested — no policy required.',
+                    });
             - if: |-
                 (github.event_name == 'pull_request' || github.event_name == 'pull_request_review') &&
                 contains(fromJSON('["AIAgentsBitso","Claude","CursorAgent","dependabot[bot]"]'), github.event.pull_request.user.login)
@@ -25,6 +37,9 @@ jobs:
                 required_human_approvals: "2"
 name: AI PR Human Review Check
 "on":
+    merge_group:
+        types:
+            - checks_requested
     pull_request:
         types:
             - opened
