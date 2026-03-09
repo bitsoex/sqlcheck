@@ -8,6 +8,7 @@ jobs:
               uses: actions/dependency-review-action@v4
               with:
                 comment-summary-in-pr: never
+                fail-on-scopes: runtime, development, unknown
                 fail-on-severity: high
                 license-check: false
                 show-openssf-scorecard: false
