@@ -2,6 +2,7 @@ jobs:
     mark-container-job:
         container:
             env:
+                MARK_BASE_URL: ${{ vars.CONFLUENCE_BASE_URL }}
                 MARK_PASSWORD: ${{ secrets.ATLASSIAN_API_TOKEN }}
                 MARK_USERNAME: ${{ vars.ATLASSIAN_USERNAME }}
             image: kovetskiy/mark:12.2.0
