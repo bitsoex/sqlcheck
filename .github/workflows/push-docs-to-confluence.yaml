@@ -14,13 +14,28 @@ jobs:
             - name: Check if mark.toml exists
               run: 'test -f mark.toml || (echo ''Error: mark.toml not found in the docs folder'' && exit 1)'
               working-directory: ./docs
-            - name: Convert markdown docs to confluence
+            - if: ${{ github.event_name == 'pull_request' }}
+              name: Test markdown docs to confluence
+              run: mark --config mark.toml --dry-run
+              working-directory: ./docs
+            - if: ${{ github.event_name == 'push' }}
+              name: Convert markdown docs to confluence
               run: mark --config mark.toml
               working-directory: ./docs
             - name: Notify success
               run: echo 'Successfully pushed documentation to Confluence'
 name: Push Documentation to Confluence
 "on":
+    pull_request:
+        branches:
+            - main
+            - master
+        paths:
+            - docs/**
+        types:
+            - opened
+            - synchronize
+            - reopened
     push:
         branches:
             - main
