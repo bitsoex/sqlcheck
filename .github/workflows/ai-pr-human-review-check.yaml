@@ -4,7 +4,7 @@ jobs:
         steps:
             - if: |-
                 github.event_name == 'pull_request' &&
-                !contains(fromJSON('["AIAgentsBitso","Claude","CursorAgent","dependabot[bot]"]'), github.event.pull_request.user.login)
+                !contains(fromJSON('["AIAgentsBitso","claude[bot]","cursor[bot]","dependabot[bot]"]'), github.event.pull_request.user.login)
               name: Fast-pass non-AI PRs
               uses: actions/github-script@v7
               with:
@@ -30,7 +30,7 @@ jobs:
                     });
             - if: |-
                 (github.event_name == 'pull_request' || github.event_name == 'pull_request_review') &&
-                contains(fromJSON('["AIAgentsBitso","Claude","CursorAgent","dependabot[bot]"]'), github.event.pull_request.user.login)
+                contains(fromJSON('["AIAgentsBitso","claude[bot]","cursor[bot]","dependabot[bot]"]'), github.event.pull_request.user.login)
               name: Enforce human approval policy
               uses: bitsoex/actions/ai-pr-human-review-check@main
               with:
